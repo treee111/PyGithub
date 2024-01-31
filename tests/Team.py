@@ -56,7 +56,7 @@ from . import Framework
 class Team(Framework.TestCase):
     def setUp(self):
         super().setUp()
-        self.org = self.g.get_organization("BeaverSoftware")
+        self.org = self.g.get_organization("TestPyGithub")
         self.team = self.org.get_team(189850)
 
     def testAttributes(self):
@@ -135,6 +135,10 @@ class Team(Framework.TestCase):
     def testUpdateTeamRepository(self):
         repo = self.org.get_repo("FatherBeaver")
         self.assertTrue(self.team.update_team_repository(repo, "admin"))
+
+    def testRemoveTeamRepository(self):
+        repo = self.org.get_repo("FatherBeaver")
+        self.assertTrue(self.team.remove_team_repository(repo))
 
     def testRepos(self):
         repo = self.org.get_repo("FatherBeaver")
